@@ -7,11 +7,12 @@ import { UpdateBoardsDto } from './dto/update-boards.dto';
 export class BoardsService {
     constructor(private prisma: PrismaService) {}
 
-    async create(createBoardDto: CreateBoardDto) {
-        return this.prisma.board.create({
-            data: createBoardDto,
-        });
-    } 
+   async create(dto: CreateBoardDto) {
+    return this.prismaService.user.create({
+      data: dto,
+    });
+  }
+
 
     async findAll() {
         return this.prisma.board.findMany();
