@@ -1,6 +1,6 @@
 import { IsString, IsOptional, IsEnum, IsNotEmpty } from 'class-validator';
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { TaskStatus } from 'src/generated/prisma/enums';
+import { TaskStatus } from '../enums/task-status.enum';
 
 export class CreateTaskDto {
   @ApiProperty({ example: 'Купить продукты' })

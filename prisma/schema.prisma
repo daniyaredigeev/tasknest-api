@@ -5,9 +5,8 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider      = "prisma-client-js"
-  output        = "../src/generated/prisma"
-  moduleFormat  = "cjs"
+  provider = "prisma-client-js"
+  // Убираем output, чтобы он генерировался в node_modules
 }
 
 datasource db {
@@ -16,22 +15,22 @@ datasource db {
 
 // Таблица: User
 model User {
-  id      String   @id @default(uuid()) // Уникальный идентификатор пользователя
-  name    String
-  email   String  @unique
+  id        String   @id @default(uuid()) // Уникальный идентификатор пользователя
+  name      String
+  email     String   @unique
   password  String   // Хранение пароля в виде хэша для безопасности
-createdAt DateTime @default(now()) // Дата и время создания пользователя
-updatedAt DateTime @updatedAt // Дата и время последнего обновления пользователя
-  tasks   Task[]  // Один пользователь может иметь много задач
+  createdAt DateTime @default(now()) // Дата и время создания пользователя
+  updatedAt DateTime @updatedAt // Дата и время последнего обновления пользователя
+  tasks     Task[] // Один пользователь может иметь много задач
 }
 
 // Таблица: Board
 model Board {
-  id        String      @id @default(uuid()) // Уникальный идентификатор доски
-  title     String                                    // Название доски
-  createdAt DateTime @default(now())                 // Дата создания
-  tasks     Task[]                                   // Связь One-to-Many с задачами
- description String?                                   // Опциональное описание доски
+  id          String   @id @default(uuid()) // Уникальный идентификатор доски
+  title       String   // Название доски
+  description String?  // Опциональное описание доски
+  createdAt   DateTime @default(now()) // Дата создания
+  tasks       Task[] // Связь One-to-Many с задачами
 }
 
 // Enum для статусов задач
