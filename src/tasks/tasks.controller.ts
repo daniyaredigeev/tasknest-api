@@ -3,7 +3,7 @@ import { ApiTags, ApiOperation, ApiQuery, ApiResponse } from '@nestjs/swagger'; 
 import { TasksService } from './tasks.service';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
-import { TaskStatus } from 'src/generated/prisma/enums';
+import { TaskStatus } from './enums/task-status.enum';
 
 @ApiTags('Задачи (Tasks)') // Группировка в UI
 @Controller('tasks')

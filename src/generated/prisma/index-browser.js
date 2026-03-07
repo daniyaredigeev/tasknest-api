@@ -132,8 +132,8 @@ exports.Prisma.UserScalarFieldEnum = {
 exports.Prisma.BoardScalarFieldEnum = {
   id: 'id',
   title: 'title',
-  createdAt: 'createdAt',
-  description: 'description'
+  description: 'description',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.TaskScalarFieldEnum = {

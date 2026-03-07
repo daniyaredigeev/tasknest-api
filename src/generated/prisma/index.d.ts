@@ -2219,22 +2219,22 @@ export namespace Prisma {
   export type BoardMinAggregateOutputType = {
     id: string | null
     title: string | null
-    createdAt: Date | null
     description: string | null
+    createdAt: Date | null
   }
 
   export type BoardMaxAggregateOutputType = {
     id: string | null
     title: string | null
-    createdAt: Date | null
     description: string | null
+    createdAt: Date | null
   }
 
   export type BoardCountAggregateOutputType = {
     id: number
     title: number
-    createdAt: number
     description: number
+    createdAt: number
     _all: number
   }
 
@@ -2242,22 +2242,22 @@ export namespace Prisma {
   export type BoardMinAggregateInputType = {
     id?: true
     title?: true
-    createdAt?: true
     description?: true
+    createdAt?: true
   }
 
   export type BoardMaxAggregateInputType = {
     id?: true
     title?: true
-    createdAt?: true
     description?: true
+    createdAt?: true
   }
 
   export type BoardCountAggregateInputType = {
     id?: true
     title?: true
-    createdAt?: true
     description?: true
+    createdAt?: true
     _all?: true
   }
 
@@ -2336,8 +2336,8 @@ export namespace Prisma {
   export type BoardGroupByOutputType = {
     id: string
     title: string
-    createdAt: Date
     description: string | null
+    createdAt: Date
     _count: BoardCountAggregateOutputType | null
     _min: BoardMinAggregateOutputType | null
     _max: BoardMaxAggregateOutputType | null
@@ -2360,8 +2360,8 @@ export namespace Prisma {
   export type BoardSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
-    createdAt?: boolean
     description?: boolean
+    createdAt?: boolean
     tasks?: boolean | Board$tasksArgs<ExtArgs>
     _count?: boolean | BoardCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["board"]>
@@ -2369,25 +2369,25 @@ export namespace Prisma {
   export type BoardSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
-    createdAt?: boolean
     description?: boolean
+    createdAt?: boolean
   }, ExtArgs["result"]["board"]>
 
   export type BoardSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
-    createdAt?: boolean
     description?: boolean
+    createdAt?: boolean
   }, ExtArgs["result"]["board"]>
 
   export type BoardSelectScalar = {
     id?: boolean
     title?: boolean
-    createdAt?: boolean
     description?: boolean
+    createdAt?: boolean
   }
 
-  export type BoardOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "createdAt" | "description", ExtArgs["result"]["board"]>
+  export type BoardOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "createdAt", ExtArgs["result"]["board"]>
   export type BoardInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tasks?: boolean | Board$tasksArgs<ExtArgs>
     _count?: boolean | BoardCountOutputTypeDefaultArgs<ExtArgs>
@@ -2403,8 +2403,8 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       title: string
-      createdAt: Date
       description: string | null
+      createdAt: Date
     }, ExtArgs["result"]["board"]>
     composites: {}
   }
@@ -2831,8 +2831,8 @@ export namespace Prisma {
   interface BoardFieldRefs {
     readonly id: FieldRef<"Board", 'String'>
     readonly title: FieldRef<"Board", 'String'>
-    readonly createdAt: FieldRef<"Board", 'DateTime'>
     readonly description: FieldRef<"Board", 'String'>
+    readonly createdAt: FieldRef<"Board", 'DateTime'>
   }
     
 
@@ -4384,8 +4384,8 @@ export namespace Prisma {
   export const BoardScalarFieldEnum: {
     id: 'id',
     title: 'title',
-    createdAt: 'createdAt',
-    description: 'description'
+    description: 'description',
+    createdAt: 'createdAt'
   };
 
   export type BoardScalarFieldEnum = (typeof BoardScalarFieldEnum)[keyof typeof BoardScalarFieldEnum]
@@ -4558,16 +4558,16 @@ export namespace Prisma {
     NOT?: BoardWhereInput | BoardWhereInput[]
     id?: StringFilter<"Board"> | string
     title?: StringFilter<"Board"> | string
-    createdAt?: DateTimeFilter<"Board"> | Date | string
     description?: StringNullableFilter<"Board"> | string | null
+    createdAt?: DateTimeFilter<"Board"> | Date | string
     tasks?: TaskListRelationFilter
   }
 
   export type BoardOrderByWithRelationInput = {
     id?: SortOrder
     title?: SortOrder
-    createdAt?: SortOrder
     description?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
     tasks?: TaskOrderByRelationAggregateInput
   }
 
@@ -4577,16 +4577,16 @@ export namespace Prisma {
     OR?: BoardWhereInput[]
     NOT?: BoardWhereInput | BoardWhereInput[]
     title?: StringFilter<"Board"> | string
-    createdAt?: DateTimeFilter<"Board"> | Date | string
     description?: StringNullableFilter<"Board"> | string | null
+    createdAt?: DateTimeFilter<"Board"> | Date | string
     tasks?: TaskListRelationFilter
   }, "id">
 
   export type BoardOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
-    createdAt?: SortOrder
     description?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
     _count?: BoardCountOrderByAggregateInput
     _max?: BoardMaxOrderByAggregateInput
     _min?: BoardMinOrderByAggregateInput
@@ -4598,8 +4598,8 @@ export namespace Prisma {
     NOT?: BoardScalarWhereWithAggregatesInput | BoardScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Board"> | string
     title?: StringWithAggregatesFilter<"Board"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"Board"> | Date | string
     description?: StringNullableWithAggregatesFilter<"Board"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Board"> | Date | string
   }
 
   export type TaskWhereInput = {
@@ -4740,54 +4740,54 @@ export namespace Prisma {
   export type BoardCreateInput = {
     id?: string
     title: string
-    createdAt?: Date | string
     description?: string | null
+    createdAt?: Date | string
     tasks?: TaskCreateNestedManyWithoutBoardInput
   }
 
   export type BoardUncheckedCreateInput = {
     id?: string
     title: string
-    createdAt?: Date | string
     description?: string | null
+    createdAt?: Date | string
     tasks?: TaskUncheckedCreateNestedManyWithoutBoardInput
   }
 
   export type BoardUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tasks?: TaskUpdateManyWithoutBoardNestedInput
   }
 
   export type BoardUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tasks?: TaskUncheckedUpdateManyWithoutBoardNestedInput
   }
 
   export type BoardCreateManyInput = {
     id?: string
     title: string
-    createdAt?: Date | string
     description?: string | null
+    createdAt?: Date | string
   }
 
   export type BoardUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type BoardUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TaskCreateInput = {
@@ -4976,22 +4976,22 @@ export namespace Prisma {
   export type BoardCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
-    createdAt?: SortOrder
     description?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type BoardMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
-    createdAt?: SortOrder
     description?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type BoardMinOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
-    createdAt?: SortOrder
     description?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -5427,15 +5427,15 @@ export namespace Prisma {
   export type BoardCreateWithoutTasksInput = {
     id?: string
     title: string
-    createdAt?: Date | string
     description?: string | null
+    createdAt?: Date | string
   }
 
   export type BoardUncheckedCreateWithoutTasksInput = {
     id?: string
     title: string
-    createdAt?: Date | string
     description?: string | null
+    createdAt?: Date | string
   }
 
   export type BoardCreateOrConnectWithoutTasksInput = {
@@ -5480,15 +5480,15 @@ export namespace Prisma {
   export type BoardUpdateWithoutTasksInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type BoardUncheckedUpdateWithoutTasksInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserUpsertWithoutTasksInput = {

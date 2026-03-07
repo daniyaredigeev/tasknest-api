@@ -1,5 +1,5 @@
 import { IsInt, IsOptional, IsString, IsEnum, Min } from 'class-validator';
-import { TaskStatus } from 'src/generated/prisma/enums';
+import { TaskStatus } from '../enums/task-status.enum';
 
 export class UpdateTaskDto {
   @IsOptional()

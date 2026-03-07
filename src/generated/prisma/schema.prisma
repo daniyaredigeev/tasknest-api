@@ -29,9 +29,9 @@ model User {
 model Board {
   id          String   @id @default(uuid()) // Уникальный идентификатор доски
   title       String // Название доски
+  description String? // Опциональное описание доски
   createdAt   DateTime @default(now()) // Дата создания
   tasks       Task[] // Связь One-to-Many с задачами
-  description String? // Опциональное описание доски
 }
 
 // Enum для статусов задач
