@@ -11,7 +11,9 @@ export class UpdateTaskDto {
   description?: string;
 
   @IsOptional()
-  @IsEnum(TaskStatus, { message: 'Status должен быть TODO, IN_PROGRESS или DONE' })
+  @IsEnum(TaskStatus, {
+    message: 'Status должен быть TODO, IN_PROGRESS или DONE',
+  })
   status?: TaskStatus;
 
   @IsOptional()

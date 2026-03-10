@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Query,
+} from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiQuery, ApiResponse } from '@nestjs/swagger'; // Добавляем ApiQuery
 import { TasksService } from './tasks.service';
 import { CreateTaskDto } from './dto/create-task.dto';
@@ -19,11 +28,11 @@ export class TasksController {
 
   @Get()
   @ApiOperation({ summary: 'Получить все задачи' })
-  @ApiQuery({ 
-    name: 'status', 
-    enum: TaskStatus, 
-    required: false, 
-    description: 'Фильтрация задач по статусу' 
+  @ApiQuery({
+    name: 'status',
+    enum: TaskStatus,
+    required: false,
+    description: 'Фильтрация задач по статусу',
   })
   findAll(@Query('status') status?: TaskStatus) {
     return this.tasksService.findAll(status);
