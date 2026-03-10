@@ -11,7 +11,7 @@ import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { LoginRequest } from './dto/login.dto';
 import type { Request, Response } from 'express';
-import { isDev } from '../../utils/is-dev-utils';
+import { isDev } from 'src/utils/is-dev-utils';
 import { JwtPayload } from './interfaces/jwt.interface';
 
 @Injectable()
@@ -64,6 +64,7 @@ export class AuthService {
     if (!user) {
       throw new NotFoundException('Пользователь с таким email не найден');
     }
+    
 
     const isValidPassword = await verify(user.password, password);
 
@@ -101,6 +102,18 @@ export class AuthService {
     return { message: 'Вы успешно вышли из аккаунта' };
   }
 
+  async validateUser(id: string) {
+   const user = await this.prisma.user.findUnique({
+     where: { id },
+     select: { id: true },
+   });
+   if (!user) {
+     throw new NotFoundException('Пользователь не найден');
+   }
+   return user;
+ }
+
+
   private auth(res: Response, id: string) {
     const { accessToken, refreshToken } = this.generateTokens(id);
     this.setCookie(
@@ -133,4 +146,8 @@ export class AuthService {
       sameSite: !isDev(this.configService) ? 'none' : 'lax',
     });
   }
+
+
+
+
 }
