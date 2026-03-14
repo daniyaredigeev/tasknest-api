@@ -11,7 +11,10 @@ generator client {
   moduleFormat = "cjs" */
 }
   
-
+enum Role {
+ USER
+ ADMIN
+}
 
 datasource db {
   provider = "postgresql"
@@ -24,6 +27,7 @@ model User {
   email     String   @unique
   password  String   // Хранение пароля в виде хэша для безопасности
   createdAt DateTime @default(now()) // Дата и время создания пользователя
+   role      Role     @default(USER)
   updatedAt DateTime @updatedAt // Дата и время последнего обновления пользователя
   tasks     Task[] // Один пользователь может иметь много задач
 }

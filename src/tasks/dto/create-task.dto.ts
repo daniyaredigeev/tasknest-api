@@ -21,9 +21,4 @@ export class CreateTaskDto {
   @IsString({ message: 'boardId должен быть строкой' })
   @IsNotEmpty()
   boardId: string; // Теперь валидатор соответствует типу
-
-  @ApiProperty({ example: 'user-uuid-456' })
-  @IsString({ message: 'userId должен быть строкой' })
-  @IsNotEmpty()
-  userId: string; // Теперь валидатор соответствует типу
 }

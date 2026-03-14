@@ -18,11 +18,14 @@ import { ApiOperation } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { Authorization } from './decorators/authoration.decorator';
 import { Authorized } from './decorators/authorized.decorator';
+import { Public } from './decorators/public.decorator';
+
 
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
+  @Public() // помечаем этот маршрут как публичный, чтобы JwtGuard его пропускал
   @Post('register')
   @HttpCode(HttpStatus.CREATED)
   async register(
@@ -32,6 +35,7 @@ export class AuthController {
     return this.authService.register(res, dto);
   }
 
+  @Public()
   @Post('login')
   @HttpCode(HttpStatus.OK)
   async login(
@@ -41,6 +45,7 @@ export class AuthController {
     return this.authService.login(res, dto);
   }
 
+  @Public()
   @Post('refresh')
   @HttpCode(HttpStatus.OK)
   async refresh(
