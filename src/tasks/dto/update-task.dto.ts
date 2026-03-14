@@ -1,28 +1,29 @@
-import { IsInt, IsOptional, IsString, IsEnum, Min } from 'class-validator';
+import { IsOptional, IsString, IsEnum } from 'class-validator';
+import { ApiPropertyOptional } from '@nestjs/swagger';
 import { TaskStatus } from '../enums/task-status.enum';
 
 export class UpdateTaskDto {
+  @ApiPropertyOptional({ example: 'Обновленное название' })
   @IsOptional()
   @IsString({ message: 'Title должен быть строкой' })
   title?: string;
 
+  @ApiPropertyOptional({ example: 'Обновленное описание' })
   @IsOptional()
   @IsString({ message: 'Description должен быть строкой' })
   description?: string;
 
+  @ApiPropertyOptional({ enum: TaskStatus })
   @IsOptional()
   @IsEnum(TaskStatus, {
     message: 'Status должен быть TODO, IN_PROGRESS или DONE',
   })
   status?: TaskStatus;
 
+  @ApiPropertyOptional({ example: 'uuid-доски' })
   @IsOptional()
-  @IsInt({ message: 'boardId должен быть числом' })
-  @Min(1, { message: 'boardId должен быть >= 1' })
+  @IsString({ message: 'boardId должен быть строкой (UUID)' })
   boardId?: string;
 
-  @IsOptional()
-  @IsInt({ message: 'userId должен быть числом' })
-  @Min(1, { message: 'userId должен быть >= 1' })
-  userId?: string;
+  // userId убираем, так как клиент не должен его менять
 }
