@@ -54,25 +54,29 @@ export class AuthService {
     return this.auth(res, user.id);
   }
 
-  async login(res: Response, dto: LoginRequest) {
-    const { email, password } = dto;
-    const user = await this.prisma.user.findUnique({
-      where: { email },
-      select: { id: true, password: true },
-    });
+ async login(res: Response, dto: LoginRequest) {
+  const { email, password } = dto;
+  
+  const user = await this.prisma.user.findUnique({
+    where: { email },
+    select: { id: true, password: true },
+  });
 
-    if (!user) {
-      throw new NotFoundException('Пользователь с таким email не найден');
-    }
-    
-
-    const isValidPassword = await verify(user.password, password);
-
-    if (!isValidPassword) {
-      throw new NotFoundException('Неверный пароль');
-    }
-    return this.auth(res, user.id);
+  // ИСПРАВЛЕНИЕ 1: Если пользователь не найден — 401 вместо 404
+  if (!user) {
+    throw new UnauthorizedException('Неверный email или пароль');
   }
+
+  const isValidPassword = await verify(user.password, password);
+
+  // ИСПРАВЛЕНИЕ 2: Если пароль неверный — 401 вместо 404
+  // ИСПРАВЛЕНИЕ 3: Сообщение такое же, как выше, чтобы не раскрывать детали
+  if (!isValidPassword) {
+    throw new UnauthorizedException('Неверный email или пароль');
+  }
+
+  return this.auth(res, user.id);
+}
 
   async refresh(req: Request, res: Response) {
     const refreshToken = req.cookies['refreshToken'];
@@ -103,15 +107,18 @@ export class AuthService {
   }
 
   async validateUser(id: string) {
-   const user = await this.prisma.user.findUnique({
-     where: { id },
-     select: { id: true, role: true },
-   });
-   if (!user) {
-     throw new NotFoundException('Пользователь не найден');
-   }
-   return user;
- }
+  const user = await this.prisma.user.findUnique({
+    where: { id },
+    select: { id: true, role: true },
+  });
+
+  // ИСПРАВЛЕНИЕ: Используем UnauthorizedException (401) вместо NotFoundException (404)
+  if (!user) {
+    throw new UnauthorizedException('Доступ запрещен: пользователь не найден');
+  }
+
+  return user;
+}
 
 
   private auth(res: Response, id: string) {
