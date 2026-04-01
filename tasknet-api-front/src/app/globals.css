@@ -1,0 +1,49 @@
+/* app/globals.css */
+@import "tailwindcss";
+
+/* Настройка базовых переменных */
+:root {
+  --background: #f8fafc; /* Светло-серый фон (Slate 50) */
+  --foreground: #0f172a; /* Почти черный текст (Slate 900) */
+  
+  /* Цвета для Indigo (основной цвет TaskNest) */
+  --primary: #4f46e5;
+  --primary-foreground: #ffffff;
+}
+
+/* Настройка темы Tailwind v4 */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+}
+
+/* Общие стили для body */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  /* Используем системные шрифты для лучшей читаемости */
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Плавные переходы для всех элементов (опционально) */
+* {
+  border-color: #e2e8f0; /* По умолчанию границы Slate 200 */
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1; /* slate-300 */
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8; /* slate-400 */
+}
